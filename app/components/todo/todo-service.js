@@ -11,19 +11,19 @@ function TodoService() {
 
 	this.getTodos = function (draw) {
 		$.get(baseUrl)
-			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
+			.then(function (res) { 
+				todos = res
+				draw(todos)
 				
 			})
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo) {
+	this.addTodo = function (todo, getTodos) {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
-			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				todoList = todo
-				cb(todo)
-			}) 
+			.then(getTodos)
+		
 			.fail(logError)
 	}
 
@@ -46,7 +46,7 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.removeTodo = function () {
+	this.removeTodo = function (index, getTodos) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
 		$.ajax({
             url: baseUrl + '/' + index,
@@ -56,6 +56,6 @@ function TodoService() {
             .fail(logError)
     }
 		
-	}
-
 }
+
+

@@ -1,4 +1,4 @@
-function TodoController() {
+function ToDoController() {
 	// new up the TodoService that has already been configured for your use
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
@@ -22,21 +22,23 @@ function TodoController() {
 		template += `
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todocontroller.removeTodo(${i})"></i>
+					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
 					<h3>${todo.todo}</h3>	
 				</div>
 			</div>
 
 		`
+		}
 		document.getElementById('todo').innerHTML = template
 	}
 
-	this.addTodoFromForm = function (e) {
-		e.preventDefault()
+	this.addToDoFromForm = function (event) {
+		event.preventDefault()
 		// TAKE THE INFORMATION FORM THE FORM
-		var form = e.target
+		var form = event.target.title.value
 		var todo = {
-			// DONT FORGET TO BUILD YOUR TODO OBJECT
+			todo: form
+
 		}
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
@@ -52,12 +54,12 @@ function TodoController() {
 		// YEP THATS IT FOR ME
 	}
 
-	this.removeTodo = function (todoId) {
-		// ask the service to run the remove todo with this id
+	this.removeTodo = function (index) {
+		todoService.removeTodo(index, getTodos)
 
-		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
+
 	}
-	draw(todos)
+	getTodos()
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
 }
