@@ -10,7 +10,6 @@ function TodoController() {
 
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
-		//FYI DONT EDIT ME :)
 		todoService.getTodos(draw)
 	}
 
@@ -18,11 +17,22 @@ function TodoController() {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var template = ''
-		//DONT FORGET TO LOOP
+		for (var i = 0; i < todos.length; i++) {
+			var todo = todos[i];
+		template += `
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todocontroller.removeTodo(${i})"></i>
+					<h3>${todo.todo}</h3>	
+				</div>
+			</div>
+
+		`
+		document.getElementById('todo').innerHTML = template
 	}
 
 	this.addTodoFromForm = function (e) {
-		e.preventDefault() // <-- hey this time its a freebie don't forget this
+		e.preventDefault()
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
 		var todo = {
@@ -47,7 +57,7 @@ function TodoController() {
 
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
-
+	draw(todos)
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
 }
