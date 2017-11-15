@@ -12,7 +12,7 @@ function QuoteController(){
 		var template =`
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<h4><mark>${quote}</mark></h4>
+				<h4><span>${quote}</span></h4>
 				<h5><mark>~<strong>${author}</strong></mark></h5>
 			</div>
 		</div>

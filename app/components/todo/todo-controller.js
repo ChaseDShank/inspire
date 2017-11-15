@@ -17,12 +17,13 @@ function ToDoController() {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var template = ''
+		var todoNum = todos.length
 		for (var i = 0; i < todos.length; i++) {
 			var todo = todos[i];
 		template += `
 			<div class="panel panel-info">
-				<div class="panel-heading">
-					<i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
+				<div class="panel-heading text-center">
+					<i class="glyphicon glyphicon-trash pull-left" onclick="app.controllers.todoController.removeTodo(${i})"></i>
 					<h3>${todo.todo}</h3>	
 				</div>
 			</div>
@@ -30,6 +31,7 @@ function ToDoController() {
 		`
 		}
 		document.getElementById('todo').innerHTML = template
+		document.getElementById('count').innerHTML = todoNum
 	}
 
 	this.addToDoFromForm = function (event) {
@@ -40,6 +42,7 @@ function ToDoController() {
 			todo: form
 
 		}
+		
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO

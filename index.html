@@ -22,16 +22,19 @@
 			<div class="col-xs-4">
 				<form class="form" onsubmit="app.controllers.todoController.addToDoFromForm(event)" id="formId">
 					<div class="form-group">
-						<label for="title">Today's Todo's</label>
-						<input type="text" name="title" class="form-control">
+						<input type="text" name="title" class="form-control" placeholder="have something to do?">
 					</div>
 					<div class="form-group">
 						<button class="btn btn-success" type="submit">Add</button>
 					</div>
+					</div>
+				</form>
 			</div>
-			</form>
-
-		</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Things to do</h2><h4 id="count"></h4>
+				</div>
+			</div>
 		<div class="row" id="todo">
 
 		</div>
